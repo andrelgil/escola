@@ -12,6 +12,12 @@ class ClassRoomSeeder extends Seeder
      */
     public function run()
     {
-        factory(ClassRoom::class,10)->create();
+        $rooms = ['6a Série A','6a Série B','7a Série A','7a Série B','8a Série A','8a Série B'];
+
+        foreach ($rooms as $room){
+            factory(ClassRoom::class)->create([
+                'name' => $room
+            ]);
+        }
     }
 }

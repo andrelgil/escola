@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Material;
 use Illuminate\Database\Seeder;
 
 class MaterialSeeder extends Seeder
@@ -11,6 +12,11 @@ class MaterialSeeder extends Seeder
      */
     public function run()
     {
-        factory(Material::class,10)->create();
+        $materials = ['Português','Matemática','Geografia','História','Ciências','Ed. Física','Arte','Projeto de Vida','Eletiva','Tecnologia'];
+        foreach ($materials as $material){
+            factory(Material::class)->create([
+                'name' => $material
+            ]);
+        }
     }
 }
