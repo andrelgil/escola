@@ -12,14 +12,4 @@ class ClassRoom_Material extends Model
         'classroom_id',
         'material_id',
     ];
-
-    public function classrooms()
-    {
-        return $this->hasMany(ClassRom::class);
-    }
-
-    public function materials()
-    {
-        return $this->hasMany(Material::class);
-    }
 }

@@ -11,4 +11,9 @@ class Material extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function classroom()
+    {
+        return $this->hasMany(ClassRom::class, 'material_id');
+    }
 }
