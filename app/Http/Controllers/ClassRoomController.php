@@ -14,7 +14,8 @@ class ClassRoomController extends Controller
      */
     public function index()
     {
-        return view('series.index');
+        $rooms = ClassRoom::orderBy('name')->get();
+        return view('series.index', ['rooms' => $rooms]);
     }
 
     /**
@@ -24,7 +25,7 @@ class ClassRoomController extends Controller
      */
     public function create()
     {
-        //
+        return view('series.form');
     }
 
     /**
@@ -35,7 +36,8 @@ class ClassRoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ClassRoom::create($request->all());
+        return redirect()->route('series.index');
     }
 
     /**
@@ -57,7 +59,7 @@ class ClassRoomController extends Controller
      */
     public function edit(ClassRoom $classRoom)
     {
-        //
+        return view('series.form', [ 'room' => $classRoom]);
     }
 
     /**
@@ -69,7 +71,8 @@ class ClassRoomController extends Controller
      */
     public function update(Request $request, ClassRoom $classRoom)
     {
-        //
+        $classRoom->update($request->all());
+        return redirect()->route('series.index');
     }
 
     /**
@@ -80,6 +83,7 @@ class ClassRoomController extends Controller
      */
     public function destroy(ClassRoom $classRoom)
     {
-        //
+        $classRoom->delete();
+        return redirect()->route('series.index');
     }
 }
