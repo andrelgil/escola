@@ -12,7 +12,7 @@ class MaterialSeeder extends Seeder
      */
     public function run()
     {
-        $materials = ['Português','Matemática','Geografia','História','Ciências','Ed. Física','Arte','Projeto de Vida','Eletiva','Tecnologia'];
+        $materials = ['Português','Matemática','Geografia','História','Ciências','Educação Física','Arte','Projeto de Vida','Eletiva','Tecnologia'];
         foreach ($materials as $material){
             factory(Material::class)->create([
                 'name' => $material

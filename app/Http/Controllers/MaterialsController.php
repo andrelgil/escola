@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Materials;
+use App\Models\Material;
 use Illuminate\Http\Request;
 
 class MaterialsController extends Controller
@@ -14,7 +14,8 @@ class MaterialsController extends Controller
      */
     public function index()
     {
-        //
+        $material = Material::orderBy('name')->get();
+        return view('materias.index', ['materials' => $material]);
     }
 
     /**
@@ -24,7 +25,7 @@ class MaterialsController extends Controller
      */
     public function create()
     {
-        //
+        return view('materias.form');
     }
 
     /**
@@ -35,7 +36,8 @@ class MaterialsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Material::create($request->all());
+        return redirect()->route('materias.index');
     }
 
     /**
@@ -44,7 +46,7 @@ class MaterialsController extends Controller
      * @param  \App\Models\Materials  $materials
      * @return \Illuminate\Http\Response
      */
-    public function show(Materials $materials)
+    public function show(Material $material)
     {
         //
     }
@@ -55,9 +57,9 @@ class MaterialsController extends Controller
      * @param  \App\Models\Materials  $materials
      * @return \Illuminate\Http\Response
      */
-    public function edit(Materials $materials)
+    public function edit(Material $material)
     {
-        //
+        return view('materias.form', [ 'room' => $material]);
     }
 
     /**
@@ -67,9 +69,10 @@ class MaterialsController extends Controller
      * @param  \App\Models\Materials  $materials
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Materials $materials)
+    public function update(Request $request, Material $material)
     {
-        //
+        $material->update($request->all());
+        return redirect()->route('materias.index');
     }
 
     /**
@@ -78,8 +81,9 @@ class MaterialsController extends Controller
      * @param  \App\Models\Materials  $materials
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Materials $materials)
+    public function destroy(Material $material)
     {
-        //
+        $material->delete();
+        return redirect()->route('materias.index');
     }
 }
