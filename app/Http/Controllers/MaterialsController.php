@@ -14,8 +14,8 @@ class MaterialsController extends Controller
      */
     public function index()
     {
-        $material = Material::orderBy('name')->get();
-        return view('materias.index', ['materials' => $material]);
+        $materials = Material::orderBy('name')->get();
+        return view('materias.index', ['materials' => $materials]);
     }
 
     /**
@@ -59,7 +59,7 @@ class MaterialsController extends Controller
      */
     public function edit(Material $material)
     {
-        return view('materias.form', [ 'room' => $material]);
+        return view('materias.form', [ 'material' => $material]);
     }
 
     /**

@@ -33,6 +33,6 @@ Route::delete('/series/{classRoom}/destroy', 'ClassRoomController@destroy')->nam
 Route::get('/materias', 'MaterialsController@index')->name('materias.index');
 Route::get('/materias/novo', 'MaterialsController@create')->name('materias.novo');
 Route::post('/materias/novo', 'MaterialsController@store');
-Route::get('/materias/{materials}/editar', 'MaterialsController@edit')->name('materias.editar');
-Route::put('/materias/{materials}/editar', 'MaterialsController@update');
-Route::delete('/materias/{materials}/destroy', 'MaterialsController@destroy')->name('materias.destroy');
+Route::get('/materias/{material}/editar', 'MaterialsController@edit')->name('materias.editar');
+Route::put('/materias/{material}/editar', 'MaterialsController@update');
+Route::delete('/materias/{material}/destroy', 'MaterialsController@destroy')->name('materias.destroy');

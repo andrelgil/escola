@@ -25,10 +25,10 @@
                             <th scope="row">{{ $material->id }}</th>
                             <td>{{ $material->name }}</td>
                             <td align="right" width="170">
-                                <form action="{{ route('materias.destroy', ['materials' => $material->id]) }}" method="post">
+                                <form action="{{ route('materias.destroy', ['material' => $material->id]) }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{ route('materias.editar', [ 'materials' => $material->id ]) }}" class="btn btn-outline-primary btn-sm">
+                                    <a href="{{ route('materias.editar', [ 'material' => $material->id ]) }}" class="btn btn-outline-primary btn-sm">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     <button type="submit" class="btn btn-outline-danger btn-sm">
