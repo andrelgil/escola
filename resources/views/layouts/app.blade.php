@@ -62,6 +62,9 @@
                                     <a class="dropdown-item" href="{{ route('materias.index') }}">
                                         {{ __('Matérias') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('usuarios.index') }}">
+                                        {{ __('Usuários') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

@@ -36,3 +36,11 @@ Route::post('/materias/novo', 'MaterialsController@store');
 Route::get('/materias/{material}/editar', 'MaterialsController@edit')->name('materias.editar');
 Route::put('/materias/{material}/editar', 'MaterialsController@update');
 Route::delete('/materias/{material}/destroy', 'MaterialsController@destroy')->name('materias.destroy');
+
+// Usuarios
+Route::get('/usuarios', 'UserController@index')->name('usuarios.index');
+Route::get('/usuarios/novo', 'UserController@create')->name('usuarios.novo');
+Route::post('/usuarios/novo', 'UserController@store');
+Route::get('/usuarios/{user}/editar', 'UserController@edit')->name('usuarios.editar');
+Route::put('/usuarios/{user}/editar', 'UserController@update');
+Route::delete('/usuarios/{user}/destroy', 'UserController@destroy')->name('usuarios.destroy');
