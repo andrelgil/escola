@@ -48,6 +48,10 @@
                 font-size: 84px;
             }
 
+            .sub-title {
+                font-size: 35px;
+            }
+
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -59,8 +63,9 @@
             }
 
             .m-b-md {
-                margin-bottom: 30px;
+                margin-bottom: 60px;
             }
+
         </style>
     </head>
     <body>
@@ -80,14 +85,12 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    E.E. Alfredo Minervino
-                    <div>Catanduva - SP</div>
-                </div>
+                <div class="title">E.E. Alfredo Minervino</div>
+                <div class="sub-title m-b-md">Catanduva - SP</div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Sobre a Escola</a>
-                    <a href="https://laracasts.com">Secretaria da Educação</a>
+                    <a href="https://www.escol.as/191804-alfredo-minervino" target="_blank">Sobre a Escola</a>
+                    <a href="http://www.catanduva.sp.gov.br/services/secretaria-de-educacao-2/" target="_blank">Secretaria da Educação</a>
                 </div>
             </div>
         </div>
