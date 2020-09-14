@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTwoMonthsTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateTwoMonthsTable extends Migration
      */
     public function up()
     {
-        Schema::create('twomonths', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name',40)->unique();
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ class CreateTwoMonthsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('twomonths');
+        Schema::dropIfExists('categories');
     }
 }

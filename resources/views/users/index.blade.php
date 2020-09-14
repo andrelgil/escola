@@ -17,7 +17,7 @@
                         <th scope="col">Id</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Administrador</th>
-                        <th scope="col">Professor</th>
+                        <th scope="col">Tipo</th>
                         <th scope="col"></th>
                         </tr>
                     </thead>
@@ -26,8 +26,8 @@
                         <tr>
                             <th scope="row">{{ $user->id }}</th>
                             <td>{{ $user->name }}</td>
-                            <td>{{ $user->admin }}</td>
-                            <td>{{ $user->teacher }}</td>
+                            <td>@if ($user->admin == 1) Sim @else Não @endif</td>
+                            <td>@if ($user->teacher == 1) Professor @else Aluno @endif</td>
                             <td align="right" width="170">
                                 <form action="{{ route('usuarios.destroy', ['user' => $user->id]) }}" method="post">
                                     @csrf

@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class CategoryController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $users = User::orderBy('name')->get();
-        return view('users.index', ['users' => $users]);
+        //
     }
 
     /**
@@ -25,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.form');
+        //
     }
 
     /**
@@ -36,47 +35,51 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->all());
-        return redirect()->route('usuarios.index');
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Category  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Category $category)
+    {
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Category $category)
     {
-        return view('users.form', ['user' => $user]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Category $category)
     {
-        $data = $request->all();
-        if (!isset($data['admin'])) {
-            $data['admin'] = 0;
-        }
-        $user->update($data);
-        return redirect()->route('usuarios.index');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Category $category)
     {
-        $user->delete();
-        return redirect()->route('usuarios.index');
+        //
     }
 }
