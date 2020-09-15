@@ -44,3 +44,11 @@ Route::post('/usuarios/novo', 'UserController@store');
 Route::get('/usuarios/{user}/editar', 'UserController@edit')->name('usuarios.editar');
 Route::put('/usuarios/{user}/editar', 'UserController@update');
 Route::delete('/usuarios/{user}/destroy', 'UserController@destroy')->name('usuarios.destroy');
+
+// Segmentos
+Route::get('/segmentos', 'CategoryController@index')->name('segmentos.index');
+Route::get('/segmentos/novo', 'CategoryController@create')->name('segmentos.novo');
+Route::post('/segmentos/novo', 'CategoryController@store');
+Route::get('/segmentos/{category}/editar', 'CategoryController@edit')->name('segmentos.editar');
+Route::put('/segmentos/{category}/editar', 'CategoryController@update');
+Route::delete('/segmentos/{category}/destroy', 'CategoryController@destroy')->name('segmentos.destroy');
