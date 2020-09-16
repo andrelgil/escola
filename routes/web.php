@@ -42,9 +42,12 @@ Route::get('/usuarios', 'UserController@index')->name('usuarios.index');
 Route::get('/usuarios/novo', 'UserController@create')->name('usuarios.novo');
 Route::post('/usuarios/novo', 'UserController@store');
 Route::get('/usuarios/{user}/editar', 'UserController@edit')->name('usuarios.editar');
-//Route::get('/usuarios/{user}/editar', 'UserController@editpasswd')->name('usuarios.editarsenha');
 Route::put('/usuarios/{user}/editar', 'UserController@update');
 Route::delete('/usuarios/{user}/destroy', 'UserController@destroy')->name('usuarios.destroy');
+
+// Profiles
+Route::get('/meus-dados', 'ProfileController@index')->name('profile.index');
+Route::put('/meus-dados', 'ProfileController@update');
 
 // Segmentos
 Route::get('/segmentos', 'CategoryController@index')->name('segmentos.index');

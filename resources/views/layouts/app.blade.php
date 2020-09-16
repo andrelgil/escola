@@ -79,8 +79,8 @@
                                         {{ __('Segmentos') }}
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ route('usuarios.index') }}">
-                                        {{ __('Alterar Senha') }}
+                                    <a class="dropdown-item" href="{{ route('profile.index') }}">
+                                        {{ __('Meus Dados') }}
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

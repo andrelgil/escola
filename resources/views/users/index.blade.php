@@ -23,6 +23,7 @@
                     </thead>
                     <tbody>
                         @foreach($users as $user)
+                        @if (auth()->user()->id != $user->id)
                         <tr>
                             <th scope="row">{{ $user->id }}</th>
                             <td>{{ $user->name }}</td>
@@ -41,6 +42,7 @@
                                 </form>
                             </td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                     </table>
