@@ -12,8 +12,8 @@ class Category extends Model
         'name'
     ];
 
-    public function classroom()
-    {
-        return $this->hasMany(ClassRom::class, 'material_id');
-    }
+    //public function classroom()
+    //{
+    //    return $this->hasMany(ClassRom::class, 'material_id');
+    //}
 }

@@ -51,6 +51,11 @@ class UserController extends Controller
         return view('users.form', ['user' => $user]);
     }
 
+    public function editpasswd(User $user)
+    {
+        return view('users.formpasswd', ['user' => $user]);
+    }
+
     /**
      * Update the specified resource in storage.
      *

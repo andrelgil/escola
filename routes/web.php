@@ -42,6 +42,7 @@ Route::get('/usuarios', 'UserController@index')->name('usuarios.index');
 Route::get('/usuarios/novo', 'UserController@create')->name('usuarios.novo');
 Route::post('/usuarios/novo', 'UserController@store');
 Route::get('/usuarios/{user}/editar', 'UserController@edit')->name('usuarios.editar');
+//Route::get('/usuarios/{user}/editar', 'UserController@editpasswd')->name('usuarios.editarsenha');
 Route::put('/usuarios/{user}/editar', 'UserController@update');
 Route::delete('/usuarios/{user}/destroy', 'UserController@destroy')->name('usuarios.destroy');
 

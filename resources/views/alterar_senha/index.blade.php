@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="float-left">Usuários</h3>
+                    <h3 class="float-left">Alterar Senha</h3>
                     <a href="{{ route('usuarios.novo') }}" class="btn btn-success float-right">Novo</a>
                 </div>
 
