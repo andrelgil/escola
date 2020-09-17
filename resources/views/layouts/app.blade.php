@@ -66,6 +66,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                    @if(auth()->user()->admin == '1')
                                     <a class="dropdown-item" href="{{ route('series.index') }}">
                                         {{ __('Séries') }}
                                     </a>
@@ -91,6 +93,21 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                        @csrf
                                     </form>
+                                    @else
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ route('profile.index') }}">
+                                        {{ __('Meus Dados') }}
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Sair') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                       @csrf
+                                    </form>
+                                    @endif
                                 </div>
                             </li>
                         @endguest
