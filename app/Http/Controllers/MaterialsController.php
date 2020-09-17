@@ -72,6 +72,7 @@ class MaterialsController extends Controller
     public function update(Request $request, Material $material)
     {
         $material->update($request->all());
+        toast()->success("Matéria Salva com Sucesso.");
         return redirect()->route('materias.index');
     }
 

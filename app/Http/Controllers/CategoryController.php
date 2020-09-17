@@ -72,6 +72,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $category->update($request->all());
+        toast()->success("Segmento Salvo com Sucesso.");
         return redirect()->route('segmentos.index');
     }
 

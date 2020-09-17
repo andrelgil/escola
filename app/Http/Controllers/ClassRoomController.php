@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ClassRoom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ClassRoomController extends Controller
 {
@@ -36,6 +37,19 @@ class ClassRoomController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'name' => 'required|min:5|unique:classrooms'
+        ], $this->getMessages());
+
+        if ($validator->fails()) {
+            toast()->error("Verifique os Erros!");
+
+            return back()->withErrors($validator)
+                        ->withInput();
+        }
+
         ClassRoom::create($request->all());
         return redirect()->route('series.index');
     }
@@ -57,9 +71,9 @@ class ClassRoomController extends Controller
      * @param  \App\Models\ClassRoom  $classRoom
      * @return \Illuminate\Http\Response
      */
-    public function edit(ClassRoom $classRoom)
+    public function edit(ClassRoom $series)
     {
-        return view('series.form', [ 'room' => $classRoom]);
+        return view('series.form', [ 'room' => $series]);
     }
 
     /**
@@ -69,9 +83,11 @@ class ClassRoomController extends Controller
      * @param  \App\Models\ClassRoom  $classRoom
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ClassRoom $classRoom)
+    public function update(Request $request, ClassRoom $series)
     {
-        $classRoom->update($request->all());
+        $series->update($request->all());
+        //alert()->success("Sucesso","Série Salva com Sucesso.")->autoClose(0);
+        toast()->success("Série Salva com Sucesso.");
         return redirect()->route('series.index');
     }
 
@@ -81,9 +97,16 @@ class ClassRoomController extends Controller
      * @param  \App\Models\ClassRoom  $classRoom
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ClassRoom $classRoom)
+    public function destroy(ClassRoom $series)
     {
-        $classRoom->delete();
+        $series->delete();
         return redirect()->route('series.index');
+    }
+
+    private function getMessages() {
+        return [
+            'required' => 'Campo obrigatório!',
+            'min' => 'Mínimo de :min caracteres!'
+        ];
     }
 }
