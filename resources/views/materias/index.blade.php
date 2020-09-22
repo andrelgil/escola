@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="float-left">Matérias</h3>
-                    <a href="{{ route('materias.novo') }}" class="btn btn-success float-right">Novo</a>
+                    <a href="{{ route('materias.create') }}" class="btn btn-success float-right">Novo</a>
                 </div>
 
                 <div class="card-body">
@@ -28,7 +28,7 @@
                                 <form action="{{ route('materias.destroy', ['material' => $material->id]) }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{ route('materias.editar', [ 'material' => $material->id ]) }}" class="btn btn-outline-primary btn-sm">
+                                    <a href="{{ route('materias.edit', [ 'material' => $material->id ]) }}" class="btn btn-outline-primary btn-sm">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     <button type="submit" class="btn btn-outline-danger btn-sm">

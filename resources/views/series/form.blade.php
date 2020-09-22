@@ -23,7 +23,7 @@
                         @endif
                         <div class="form-group">
                             <label for="name">Nome</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="@if (Route::currentRouteName() == 'series.edit') {{ $room->name }} @endif" required placeholder="Digite a Série">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="@if (Route::currentRouteName() == 'series.edit') {{ $room->name }} @endif" placeholder="Digite a Série">
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

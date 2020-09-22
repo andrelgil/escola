@@ -29,6 +29,7 @@ Route::put('/meus-dados', 'ProfileController@update');
 Route::middleware(['auth','admin'])->group(function() {
 
     Route::resource('series','ClassRoomController')->except(['show'])->names('series');
+    Route::resource('materias','MaterialsController')->except(['show'])->names('materias');
 /*
         // Series
         Route::get('/', 'ClassRoomController@index')->name('series.index');
@@ -37,17 +38,15 @@ Route::middleware(['auth','admin'])->group(function() {
         Route::get('/{classRoom}/editar', 'ClassRoomController@edit')->name('series.editar');
         Route::put('/{classRoom}/editar', 'ClassRoomController@update');
         Route::delete('/{classRoom}/destroy', 'ClassRoomController@destroy')->name('series.destroy');
+
+        // Materias
+        Route::get('/materias', 'MaterialsController@index')->name('materias.index');
+        Route::get('/materias/novo', 'MaterialsController@create')->name('materias.novo');
+        Route::post('/materias/novo', 'MaterialsController@store');
+        Route::get('/materias/{material}/editar', 'MaterialsController@edit')->name('materias.editar');
+        Route::put('/materias/{material}/editar', 'MaterialsController@update');
+        Route::delete('/materias/{material}/destroy', 'MaterialsController@destroy')->name('materias.destroy');
 */
-
-
-    // Materias
-    Route::get('/materias', 'MaterialsController@index')->name('materias.index');
-    Route::get('/materias/novo', 'MaterialsController@create')->name('materias.novo');
-    Route::post('/materias/novo', 'MaterialsController@store');
-    Route::get('/materias/{material}/editar', 'MaterialsController@edit')->name('materias.editar');
-    Route::put('/materias/{material}/editar', 'MaterialsController@update');
-    Route::delete('/materias/{material}/destroy', 'MaterialsController@destroy')->name('materias.destroy');
-
     // Usuarios
     Route::get('/usuarios', 'UserController@index')->name('usuarios.index');
     Route::get('/usuarios/novo', 'UserController@create')->name('usuarios.novo');

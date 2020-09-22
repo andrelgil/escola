@@ -51,6 +51,7 @@ class ClassRoomController extends Controller
         }
 
         ClassRoom::create($request->all());
+        toast()->success("Série Criada com Sucesso.");
         return redirect()->route('series.index');
     }
 
@@ -73,7 +74,7 @@ class ClassRoomController extends Controller
      */
     public function edit(ClassRoom $series)
     {
-        return view('series.form', [ 'room' => $series]);
+        return view('series.form', ['room' => $series]);
     }
 
     /**
@@ -83,13 +84,28 @@ class ClassRoomController extends Controller
      * @param  \App\Models\ClassRoom  $classRoom
      * @return \Illuminate\Http\Response
      */
+    //public function update(Request $request, ClassRoom $series)
+
     public function update(Request $request, ClassRoom $series)
     {
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'name' => 'required|min:5|unique:classrooms'
+        ], $this->getMessages());
+
+        if ($validator->fails()) {
+            toast()->error("Verifique os Erros!");
+
+            return back()->withErrors($validator)
+                         ->withInput();
+        }
+
         $series->update($request->all());
-        //alert()->success("Sucesso","Série Salva com Sucesso.")->autoClose(0);
-        toast()->success("Série Salva com Sucesso.");
+        toast()->success("Série Alterada com Sucesso.");
         return redirect()->route('series.index');
     }
+
 
     /**
      * Remove the specified resource from storage.

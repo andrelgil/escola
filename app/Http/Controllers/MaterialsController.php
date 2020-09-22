@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Material;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MaterialsController extends Controller
 {
@@ -36,7 +37,21 @@ class MaterialsController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'name' => 'required|min:5|unique:materials'
+        ], $this->getMessages());
+
+        if ($validator->fails()) {
+            toast()->error("Verifique os Erros!");
+
+            return back()->withErrors($validator)
+                        ->withInput();
+        }
+
         Material::create($request->all());
+        toast()->success("Matéria Criada com Sucesso.");
         return redirect()->route('materias.index');
     }
 
@@ -86,5 +101,12 @@ class MaterialsController extends Controller
     {
         $material->delete();
         return redirect()->route('materias.index');
+    }
+
+    private function getMessages() {
+        return [
+            'required' => 'Campo obrigatório!',
+            'min' => 'Mínimo de :min caracteres!'
+        ];
     }
 }
