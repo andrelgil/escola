@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ClassRoom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class ClassRoomController extends Controller
 {
@@ -40,7 +41,7 @@ class ClassRoomController extends Controller
         $data = $request->all();
 
         $validator = Validator::make($data, [
-            'name' => 'required|min:5|unique:classrooms'
+            'name' => 'required|min:5|max:40|unique:classrooms'
         ], $this->getMessages());
 
         if ($validator->fails()) {
@@ -50,7 +51,7 @@ class ClassRoomController extends Controller
                         ->withInput();
         }
 
-        ClassRoom::create($request->all());
+        ClassRoom::create($data);
         toast()->success("Série Criada com Sucesso.");
         return redirect()->route('series.index');
     }
@@ -91,7 +92,7 @@ class ClassRoomController extends Controller
         $data = $request->all();
 
         $validator = Validator::make($data, [
-            'name' => 'required|min:5|unique:classrooms'
+            'name' => ['required', 'min:5', 'max:40', Rule::unique('classrooms')->ignore($series)]
         ], $this->getMessages());
 
         if ($validator->fails()) {
@@ -101,7 +102,7 @@ class ClassRoomController extends Controller
                          ->withInput();
         }
 
-        $series->update($request->all());
+        $series->update($data);
         toast()->success("Série Alterada com Sucesso.");
         return redirect()->route('series.index');
     }
@@ -122,7 +123,8 @@ class ClassRoomController extends Controller
     private function getMessages() {
         return [
             'required' => 'Campo obrigatório!',
-            'min' => 'Mínimo de :min caracteres!'
+            'min' => 'Mínimo de :min caracteres!',
+            'max' => 'Máximo de :max caracteres!'
         ];
     }
 }

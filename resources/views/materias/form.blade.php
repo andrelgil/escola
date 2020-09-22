@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="card-body">
-                <form action="@if (Route::currentRouteName() == 'materias.edit') {{ route('materias.update', ['material' => $material->id]) }} @else {{ route('materias.store') }} @endif" method="post">
+                <form action="@if (Route::currentRouteName() == 'materias.edit') {{ route('materias.update', ['materia' => $material->id]) }} @else {{ route('materias.store') }} @endif" method="post">
                     @csrf
 
                     @if (Route::currentRouteName() == 'materias.edit')

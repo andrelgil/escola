@@ -72,9 +72,9 @@ class MaterialsController extends Controller
      * @param  \App\Models\Materials  $materials
      * @return \Illuminate\Http\Response
      */
-    public function edit(Material $material)
+    public function edit(Material $materia)
     {
-        return view('materias.form', [ 'material' => $material]);
+        return view('materias.form', [ 'material' => $materia]);
     }
 
     /**
@@ -84,9 +84,9 @@ class MaterialsController extends Controller
      * @param  \App\Models\Materials  $materials
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Material $material)
+    public function update(Request $request, Material $materia)
     {
-        $material->update($request->all());
+        $materia->update($request->all());
         toast()->success("Matéria Salva com Sucesso.");
         return redirect()->route('materias.index');
     }
@@ -97,9 +97,9 @@ class MaterialsController extends Controller
      * @param  \App\Models\Materials  $materials
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Material $material)
+    public function destroy(Material $materia)
     {
-        $material->delete();
+        $materia->delete();
         return redirect()->route('materias.index');
     }
 
