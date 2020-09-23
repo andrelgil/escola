@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Material extends Model
+class Matter extends Model
 {
-    protected $table = 'materials';
+    protected $table = 'matters';
 
     protected $fillable = [
         'name'
@@ -14,6 +14,6 @@ class Material extends Model
 
     public function classroom()
     {
-        return $this->hasMany(ClassRom::class, 'material_id');
+        return $this->hasMany(ClassRom::class, 'matter_id');
     }
 }

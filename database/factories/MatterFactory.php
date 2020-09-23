@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\Material;
+use App\Models\Matter;
 use Faker\Generator as Faker;
 
-$factory->define(Material::class, function (Faker $faker) {
+$factory->define(Matter::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
     ];

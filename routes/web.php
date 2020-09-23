@@ -28,8 +28,8 @@ Route::put('/meus-dados', 'ProfileController@update');
 
 Route::middleware(['auth','admin'])->group(function() {
 
-    Route::resource('series','ClassRoomController')->except(['show'])->names('series');
-    Route::resource('materias','MaterialsController')->except(['show'])->names('materias');
+    Route::resource('classrooms','ClassRoomController')->except(['show'])->names('classrooms');
+    Route::resource('matters','MatterController')->except(['show'])->names('matters');
 /*
         // Series
         Route::get('/', 'ClassRoomController@index')->name('series.index');

@@ -19,8 +19,8 @@ class CreateArchivesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('classroom_id');
             $table->foreign('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
-            $table->unsignedBigInteger('material_id');
-            $table->foreign('material_id')->references('id')->on('materials')->onDelete('cascade');
+            $table->unsignedBigInteger('matter_id');
+            $table->foreign('matter_id')->references('id')->on('matters')->onDelete('cascade');
             $table->string('two_month', 2);
             $table->string('file');
             $table->string('filename');

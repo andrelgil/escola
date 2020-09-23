@@ -31,7 +31,7 @@
                 @if (Route::currentRouteName() == 'materias.index'  OR
                      Route::currentRouteName() == 'segmentos.index' OR
                      Route::currentRouteName() == 'usuarios.index'  OR
-                     Route::currentRouteName() == 'series.index')
+                     Route::currentRouteName() == 'classrooms.index')
                     <a class="navbar-brand" href="{{ url('/home') }}">Home</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                         <span class="navbar-toggler-icon"></span>
@@ -68,10 +68,10 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                                     @if(auth()->user()->admin == '1')
-                                    <a class="dropdown-item" href="{{ route('series.index') }}">
+                                    <a class="dropdown-item" href="{{ route('classrooms.index') }}">
                                         {{ __('Séries') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('materias.index') }}">
+                                    <a class="dropdown-item" href="{{ route('matters.index') }}">
                                         {{ __('Matérias') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('usuarios.index') }}">

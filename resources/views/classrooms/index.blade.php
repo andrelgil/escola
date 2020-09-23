@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="float-left">Séries</h3>
-                    <a href="{{ route('series.create') }}" class="btn btn-success float-right">Novo</a>
+                    <a href="{{ route('classrooms.create') }}" class="btn btn-success float-right">Novo</a>
                 </div>
 
                 <div class="card-body">
@@ -27,10 +27,10 @@
                             <th scope="row">{{ $room->id }}</th>
                             <td>{{ $room->name }}</td>
                             <td align="right" width="170">
-                                <form action="{{ route('series.destroy', ['series' => $room->id]) }}" method="post">
+                                <form action="{{ route('classrooms.destroy', ['classroom' => $room->id]) }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{ route('series.edit', [ 'series' => $room->id ]) }}" class="btn btn-outline-primary btn-sm">
+                                    <a href="{{ route('classrooms.edit', [ 'classroom' => $room->id ]) }}" class="btn btn-outline-primary btn-sm">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     <button type="submit" class="btn btn-outline-danger btn-sm">

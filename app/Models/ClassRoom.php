@@ -12,8 +12,8 @@ class ClassRoom extends Model
         'name'
     ];
 
-    public function materials()
+    public function matters()
     {
-        return $this->hasMany(Material::class, 'classroom_id');
+        return $this->hasMany(Matter::class, 'classroom_id');
     }
 }

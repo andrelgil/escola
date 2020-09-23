@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ClassRoom;
+use App\Models\Matter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class ClassRoomController extends Controller
+class MatterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class ClassRoomController extends Controller
      */
     public function index()
     {
-        $rooms = ClassRoom::orderBy('name')->get();
-        return view('classrooms.index', ['rooms' => $rooms]);
+        $matters = Matter::orderBy('name')->get();
+        return view('matters.index', ['matters' => $matters]);
     }
 
     /**
@@ -27,7 +27,7 @@ class ClassRoomController extends Controller
      */
     public function create()
     {
-        return view('classrooms.form');
+        return view('matters.form');
     }
 
     /**
@@ -41,7 +41,7 @@ class ClassRoomController extends Controller
         $data = $request->all();
 
         $validator = Validator::make($data, [
-            'name' => 'required|min:5|max:40|unique:classrooms'
+            'name' => 'required|min:5|max:40|unique:matters'
         ], $this->getMessages());
 
         if ($validator->fails()) {
@@ -51,18 +51,18 @@ class ClassRoomController extends Controller
                         ->withInput();
         }
 
-        ClassRoom::create($data);
-        toast()->success("Série Criada com Sucesso.");
-        return redirect()->route('classrooms.index');
+        Matter::create($request->all());
+        toast()->success("Matéria Criada com Sucesso.");
+        return redirect()->route('matters.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ClassRoom  $classRoom
+     * @param  \App\Models\Matter  $materials
      * @return \Illuminate\Http\Response
      */
-    public function show(ClassRoom $classroom)
+    public function show(Matter $matter)
     {
         //
     }
@@ -70,29 +70,27 @@ class ClassRoomController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ClassRoom  $classRoom
+     * @param  \App\Models\Matter  $matters
      * @return \Illuminate\Http\Response
      */
-    public function edit(ClassRoom $classroom)
+    public function edit(Matter $matter)
     {
-        return view('classrooms.form', ['room' => $classroom]);
+        return view('matters.form', [ 'matter' => $matter]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ClassRoom  $classRoom
+     * @param  \App\Models\Matter  $matters
      * @return \Illuminate\Http\Response
      */
-    //public function update(Request $request, ClassRoom $series)
-
-    public function update(Request $request, ClassRoom $classroom)
+    public function update(Request $request, Matter $matter)
     {
         $data = $request->all();
 
         $validator = Validator::make($data, [
-            'name' => ['required', 'min:5', 'max:40', Rule::unique('classrooms')->ignore($classroom)]
+            'name' => ['required', 'min:5', 'max:40', Rule::unique('matters')->ignore($matter)]
         ], $this->getMessages());
 
         if ($validator->fails()) {
@@ -102,21 +100,21 @@ class ClassRoomController extends Controller
                          ->withInput();
         }
 
-        $classroom->update($data);
-        toast()->success("Série Alterada com Sucesso.");
-        return redirect()->route('classrooms.index');
+        $matter->update($data);
+        toast()->success("Matéria Alterada com Sucesso.");
+        return redirect()->route('matters.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ClassRoom  $classRoom
+     * @param  \App\Models\Matter  $maters
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ClassRoom $classroom)
+    public function destroy(Matter $matter)
     {
-        $classroom->delete();
-        return redirect()->route('classrooms.index');
+        $matter->delete();
+        return redirect()->route('matters.index');
     }
 
     private function getMessages() {
@@ -124,7 +122,7 @@ class ClassRoomController extends Controller
             'required' => 'Este campo é obrigatório!',
             'min' => 'Mínimo de :min caracteres!',
             'max' => 'Máximo de :max caracteres!',
-            'unique' => 'Já existe esta série cadastrada!'
+            'unique' => 'Já existe esta matéria cadastrada!'
         ];
     }
 }
