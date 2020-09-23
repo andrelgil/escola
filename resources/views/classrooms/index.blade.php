@@ -27,13 +27,13 @@
                             <th scope="row">{{ $room->id }}</th>
                             <td>{{ $room->name }}</td>
                             <td align="right" width="170">
-                                <form action="{{ route('classrooms.destroy', ['classroom' => $room->id]) }}" method="post">
+                                <form id="form_{{ $room->id }}" action="{{ route('classrooms.destroy', ['classroom' => $room->id]) }}" method="post">
                                     @csrf
                                     @method('delete')
                                     <a href="{{ route('classrooms.edit', [ 'classroom' => $room->id ]) }}" class="btn btn-outline-primary btn-sm">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
-                                    <button type="submit" class="btn btn-outline-danger btn-sm">
+                                    <button type="button" onclick="confirmDelete('form_{{ $room->id }}')" class="btn btn-outline-danger btn-sm">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </form>
@@ -50,4 +50,24 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script>
+    const confirmDelete = (form) => {
+        Swal.fire({
+            title: "Atenção!",
+            text: "Você deseja realmente excluir essa Série?",
+            showCancelButton: true,
+            cancelButtonText: 'Não',
+            cancelButtonColor: '#3085D6',
+            confirmButtonText: 'Sim, Excluir!',
+            confirmButtonColor: '#C70000',
+            icon: 'warning',
+        }).then(result => {
+            if (result.isConfirmed) {
+                document.querySelector(`#${form}`).submit();
+            }
+        });
+    }
+</script>
 @endsection

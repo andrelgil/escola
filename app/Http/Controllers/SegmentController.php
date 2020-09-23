@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Matter;
+use App\Models\Segment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
-class MatterController extends Controller
+class SegmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class MatterController extends Controller
      */
     public function index()
     {
-        $matters = Matter::orderBy('name')->get();
-        return view('matters.index', ['matters' => $matters]);
+        $segments = Segment::orderBy('name')->get();
+        return view('segments.index', ['segments' => $segments]);
     }
 
     /**
@@ -27,7 +27,7 @@ class MatterController extends Controller
      */
     public function create()
     {
-        return view('matters.form');
+        return view('segments.form');
     }
 
     /**
@@ -41,7 +41,7 @@ class MatterController extends Controller
         $data = $request->all();
 
         $validator = Validator::make($data, [
-            'name' => 'required|min:5|max:40|unique:matters'
+            'name' => 'required|min:5|max:40|unique:segments'
         ], $this->getMessages());
 
         if ($validator->fails()) {
@@ -51,18 +51,18 @@ class MatterController extends Controller
                         ->withInput();
         }
 
-        Matter::create($data);
-        toast()->success("Matéria Criada com Sucesso.");
-        return redirect()->route('matters.index');
+        Segment::create($data);
+        toast()->success("Segmento Criado com Sucesso.");
+        return redirect()->route('segments.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Matter  $materials
+     * @param  \App\Models\Segment  $segment
      * @return \Illuminate\Http\Response
      */
-    public function show(Matter $matter)
+    public function show(Segment $segment)
     {
         //
     }
@@ -70,27 +70,27 @@ class MatterController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Matter  $matters
+     * @param  \App\Models\Segment  $segment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Matter $matter)
+    public function edit(Segment $segment)
     {
-        return view('matters.form', [ 'matter' => $matter]);
+        return view('segments.form', ['segment' => $segment]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Matter  $matters
+     * @param  \App\Models\Segment  $segment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Matter $matter)
+    public function update(Request $request, Segment $segment)
     {
         $data = $request->all();
 
         $validator = Validator::make($data, [
-            'name' => ['required', 'min:5', 'max:40', Rule::unique('matters')->ignore($matter)]
+            'name' => ['required', 'min:5', 'max:40', Rule::unique('segments')->ignore($segment)]
         ], $this->getMessages());
 
         if ($validator->fails()) {
@@ -100,21 +100,21 @@ class MatterController extends Controller
                          ->withInput();
         }
 
-        $matter->update($data);
-        toast()->success("Matéria Alterada com Sucesso.");
-        return redirect()->route('matters.index');
+        $segment->update($data);
+        toast()->success("Segmento Alterado com Sucesso.");
+        return redirect()->route('segments.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Matter  $maters
+     * @param  \App\Models\Segment  $segment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Matter $matter)
+    public function destroy(Segment $segment)
     {
-        $matter->delete();
-        return redirect()->route('matters.index');
+        $segment->delete();
+        return redirect()->route('segments.index');
     }
 
     private function getMessages() {
@@ -122,7 +122,7 @@ class MatterController extends Controller
             'required' => 'Este campo é obrigatório!',
             'min' => 'Mínimo de :min caracteres!',
             'max' => 'Máximo de :max caracteres!',
-            'unique' => 'Já existe esta matéria cadastrada!'
+            'unique' => 'Já existe este segmento cadastrado!'
         ];
     }
 }

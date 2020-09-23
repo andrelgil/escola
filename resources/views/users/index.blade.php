@@ -7,9 +7,8 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="float-left">Usuários</h3>
-                    <a href="{{ route('usuarios.novo') }}" class="btn btn-success float-right">Novo</a>
+                    <a href="{{ route('users.create') }}" class="btn btn-success float-right">Novo</a>
                 </div>
-
                 <div class="card-body">
                 <table class="table">
                     <thead>
@@ -30,10 +29,10 @@
                             <td>@if ($user->admin == 1) Sim @else Não @endif</td>
                             <td>@if ($user->teacher == 1) Professor @else Aluno @endif</td>
                             <td align="right" width="170">
-                                <form action="{{ route('usuarios.destroy', ['user' => $user->id]) }}" method="post">
+                                <form action="{{ route('users.destroy', ['user' => $user->id]) }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{ route('usuarios.editar', [ 'user' => $user->id ]) }}" class="btn btn-outline-primary btn-sm">
+                                    <a href="{{ route('users.edit', [ 'user' => $user->id ]) }}" class="btn btn-outline-primary btn-sm">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     <button type="submit" class="btn btn-outline-danger btn-sm">

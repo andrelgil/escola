@@ -28,8 +28,8 @@
                     {{ config('app.name', 'Laravel') }}
                 </a>
 
-                @if (Route::currentRouteName() == 'materias.index'  OR
-                     Route::currentRouteName() == 'segmentos.index' OR
+                @if (Route::currentRouteName() == 'matters.index'  OR
+                     Route::currentRouteName() == 'segments.index' OR
                      Route::currentRouteName() == 'usuarios.index'  OR
                      Route::currentRouteName() == 'classrooms.index')
                     <a class="navbar-brand" href="{{ url('/home') }}">Home</a>
@@ -74,10 +74,10 @@
                                     <a class="dropdown-item" href="{{ route('matters.index') }}">
                                         {{ __('Matérias') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('usuarios.index') }}">
+                                    <a class="dropdown-item" href="{{ route('users.index') }}">
                                         {{ __('Usuários') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('segmentos.index') }}">
+                                    <a class="dropdown-item" href="{{ route('segments.index') }}">
                                         {{ __('Segmentos') }}
                                     </a>
                                     <div class="dropdown-divider"></div>
@@ -121,5 +121,6 @@
         </main>
     </div>
     @include('sweetalert::alert')
+    @yield('scripts')
 </body>
 </html>

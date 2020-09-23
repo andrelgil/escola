@@ -37,7 +37,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         User::create($request->all());
-        return redirect()->route('usuarios.index');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -65,7 +65,7 @@ class UserController extends Controller
             $data['admin'] = 0;
         }
         $user->update($data);
-        return redirect()->route('usuarios.index');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -77,6 +77,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('usuarios.index');
+        return redirect()->route('users.index');
     }
 }

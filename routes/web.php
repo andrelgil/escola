@@ -28,9 +28,16 @@ Route::put('/meus-dados', 'ProfileController@update');
 
 Route::middleware(['auth','admin'])->group(function() {
 
+    // Series
     Route::resource('classrooms','ClassRoomController')->except(['show'])->names('classrooms');
+    // Materias
     Route::resource('matters','MatterController')->except(['show'])->names('matters');
-/*
+    // Segmentos
+    Route::resource('segments','SegmentController')->except(['show'])->names('segments');
+    // Usuarios
+    Route::resource('users','UserController')->except(['show'])->names('users');
+
+    /*
         // Series
         Route::get('/', 'ClassRoomController@index')->name('series.index');
         Route::get('/novo', 'ClassRoomController@create')->name('series.novo');
@@ -46,22 +53,24 @@ Route::middleware(['auth','admin'])->group(function() {
         Route::get('/materias/{material}/editar', 'MaterialsController@edit')->name('materias.editar');
         Route::put('/materias/{material}/editar', 'MaterialsController@update');
         Route::delete('/materias/{material}/destroy', 'MaterialsController@destroy')->name('materias.destroy');
-*/
-    // Usuarios
-    Route::get('/usuarios', 'UserController@index')->name('usuarios.index');
-    Route::get('/usuarios/novo', 'UserController@create')->name('usuarios.novo');
-    Route::post('/usuarios/novo', 'UserController@store');
-    Route::get('/usuarios/{user}/editar', 'UserController@edit')->name('usuarios.editar');
-    Route::put('/usuarios/{user}/editar', 'UserController@update');
-    Route::delete('/usuarios/{user}/destroy', 'UserController@destroy')->name('usuarios.destroy');
 
-    // Segmentos
-    Route::get('/segmentos', 'CategoryController@index')->name('segmentos.index');
-    Route::get('/segmentos/novo', 'CategoryController@create')->name('segmentos.novo');
-    Route::post('/segmentos/novo', 'CategoryController@store');
-    Route::get('/segmentos/{category}/editar', 'CategoryController@edit')->name('segmentos.editar');
-    Route::put('/segmentos/{category}/editar', 'CategoryController@update');
-    Route::delete('/segmentos/{category}/destroy', 'CategoryController@destroy')->name('segmentos.destroy');
+        // Segmentos
+        Route::get('/segmentos', 'CategoryController@index')->name('segmentos.index');
+        Route::get('/segmentos/novo', 'CategoryController@create')->name('segmentos.novo');
+        Route::post('/segmentos/novo', 'CategoryController@store');
+        Route::get('/segmentos/{category}/editar', 'CategoryController@edit')->name('segmentos.editar');
+        Route::put('/segmentos/{category}/editar', 'CategoryController@update');
+        Route::delete('/segmentos/{category}/destroy', 'CategoryController@destroy')->name('segmentos.destroy');
+
+        // Usuarios
+        Route::get('/usuarios', 'UserController@index')->name('usuarios.index');
+        Route::get('/usuarios/novo', 'UserController@create')->name('usuarios.novo');
+        Route::post('/usuarios/novo', 'UserController@store');
+        Route::get('/usuarios/{user}/editar', 'UserController@edit')->name('usuarios.editar');
+        Route::put('/usuarios/{user}/editar', 'UserController@update');
+        Route::delete('/usuarios/{user}/destroy', 'UserController@destroy')->name('usuarios.destroy');
+    */
+
 });
 
 

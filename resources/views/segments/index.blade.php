@@ -4,14 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-
-
             <div class="card">
                 <div class="card-header">
                     <h3 class="float-left">Segmentos</h3>
-                    <a href="{{ route('segmentos.novo') }}" class="btn btn-success float-right">Novo</a>
+                    <a href="{{ route('segments.create') }}" class="btn btn-success float-right">Novo</a>
                 </div>
-
                 <div class="card-body">
                 <table class="table">
                     <thead>
@@ -22,15 +19,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($categories as $category)
+                        @foreach($segments as $segment)
                         <tr>
-                            <th scope="row">{{ $category->id }}</th>
-                            <td>{{ $category->name }}</td>
+                            <th scope="row">{{ $segment->id }}</th>
+                            <td>{{ $segment->name }}</td>
                             <td align="right" width="170">
-                                <form action="{{ route('segmentos.destroy', ['category' => $category->id]) }}" method="post">
+                                <form action="{{ route('segments.destroy', ['segment' => $segment->id]) }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{ route('segmentos.editar', ['category' => $category->id]) }}" class="btn btn-outline-primary btn-sm">
+                                    <a href="{{ route('segments.edit', ['segment' => $segment->id]) }}" class="btn btn-outline-primary btn-sm">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     <button type="submit" class="btn btn-outline-danger btn-sm">
@@ -44,9 +41,6 @@
                     </table>
                 </div>
             </div>
-
-
-
         </div>
     </div>
 </div>
