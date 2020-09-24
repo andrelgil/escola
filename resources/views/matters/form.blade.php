@@ -22,7 +22,16 @@
                     @endif
                     <div class="form-group">
                         <label for="name">Nome</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="@if (Route::currentRouteName() == 'matters.edit'){{ $matter->name }}@else{{ old('name') }}@endif" placeholder="Digite a Matéria">
+                        <input
+                            type="text"
+                            class="form-control @error('name') is-invalid @enderror"
+                            name="name"
+                            @if(isset($matter))
+                                value="{{ $matter->name }}"
+                            @else
+                                value="{{ old('name') }}"
+                            @endif
+                            placeholder="Digite a Matéria">
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

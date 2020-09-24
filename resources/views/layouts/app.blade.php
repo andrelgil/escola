@@ -19,6 +19,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .table th, .table td {
+            padding: 0.50rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+    </style>
 </head>
 <body>
     <div id="app">

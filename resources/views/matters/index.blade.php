@@ -11,7 +11,7 @@
                 </div>
 
                 <div class="card-body">
-                <table class="table">
+                <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
                         <th scope="col">Id</th>
@@ -24,14 +24,14 @@
                         <tr>
                             <th scope="row">{{ $matter->id }}</th>
                             <td>{{ $matter->name }}</td>
-                            <td align="right" width="170">
-                                <form action="{{ route('matters.destroy', ['matter' => $matter->id]) }}" method="post">
+                            <td align="right" width="85">
+                                <form id="form_{{ $matter->id }}" action="{{ route('matters.destroy', ['matter' => $matter->id]) }}" method="post">
                                     @csrf
                                     @method('delete')
                                     <a href="{{ route('matters.edit', [ 'matter' => $matter->id ]) }}" class="btn btn-outline-primary btn-sm">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
-                                    <button type="submit" class="btn btn-outline-danger btn-sm">
+                                    <button type="button" onclick="confirmDelete('form_{{ $matter->id }}')" class="btn btn-outline-danger btn-sm">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </form>
@@ -45,4 +45,24 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script>
+    const confirmDelete = (form) => {
+        Swal.fire({
+            title: "Atenção!",
+            text: "Você deseja realmente excluir essa Matéria?",
+            showCancelButton: true,
+            cancelButtonText: 'Não',
+            cancelButtonColor: '#3085D6',
+            confirmButtonText: 'Sim, Excluir!',
+            confirmButtonColor: '#C70000',
+            icon: 'warning',
+        }).then(result => {
+            if (result.isConfirmed) {
+                document.querySelector(`#${form}`).submit();
+            }
+        });
+    }
+</script>
 @endsection

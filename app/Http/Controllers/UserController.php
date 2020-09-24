@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -36,7 +37,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->all());
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|string|min:8|confirmed',
+        ],
+            $this->getMessages());
+
+        if ($validator->fails()) {
+            toast()->error("Verifique os Erros!");
+
+            return back()->withErrors($validator)
+                        ->withInput();
+        }
+
+        User::create($data);
+        toast()->success("Usuário Criado com Sucesso.");
         return redirect()->route('users.index');
     }
 
@@ -78,5 +96,16 @@ class UserController extends Controller
     {
         $user->delete();
         return redirect()->route('users.index');
+    }
+
+    private function getMessages() {
+        return [
+            'required' => 'Este campo é obrigatório!',
+            'email' => 'E-mail inválido!',
+            'min' => 'Mínimo de :min caracteres!',
+            'max' => 'Máximo de :max caracteres!',
+            'unique' => 'Já existe esta série cadastrada!',
+            'confirmed' => 'Senhas não são iguais!'
+        ];
     }
 }
