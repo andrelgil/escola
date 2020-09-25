@@ -52,7 +52,7 @@ class MatterController extends Controller
         }
 
         Matter::create($data);
-        toast()->success("Matéria Criada com Sucesso.");
+        toast()->success("Disciplina Criada com Sucesso.");
         return redirect()->route('matters.index');
     }
 
@@ -101,7 +101,7 @@ class MatterController extends Controller
         }
 
         $matter->update($data);
-        toast()->success("Matéria Alterada com Sucesso.");
+        toast()->success("Disciplina Alterada com Sucesso.");
         return redirect()->route('matters.index');
     }
 
@@ -114,6 +114,7 @@ class MatterController extends Controller
     public function destroy(Matter $matter)
     {
         $matter->delete();
+        toast()->success("Disciplina Excluída com Sucesso.");
         return redirect()->route('matters.index');
     }
 
@@ -122,7 +123,7 @@ class MatterController extends Controller
             'required' => 'Este campo é obrigatório!',
             'min' => 'Mínimo de :min caracteres!',
             'max' => 'Máximo de :max caracteres!',
-            'unique' => 'Já existe esta matéria cadastrada!'
+            'unique' => 'Já existe esta disciplina cadastrada!'
         ];
     }
 }

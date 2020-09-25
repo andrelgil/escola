@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="float-left">Matérias</h3>
+                    <h3 class="float-left">Disciplinas</h3>
                     <a href="{{ route('matters.create') }}" class="btn btn-success float-right">Novo</a>
                 </div>
 
@@ -14,7 +14,7 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                        <th scope="col">Id</th>
+                        <th scope="col" width="70">Id</th>
                         <th scope="col">Nome</th>
                         <th scope="col"></th>
                         </tr>
@@ -51,7 +51,7 @@
     const confirmDelete = (form) => {
         Swal.fire({
             title: "Atenção!",
-            text: "Você deseja realmente excluir essa Matéria?",
+            text: "Você deseja realmente excluir essa Disciplina?",
             showCancelButton: true,
             cancelButtonText: 'Não',
             cancelButtonColor: '#3085D6',

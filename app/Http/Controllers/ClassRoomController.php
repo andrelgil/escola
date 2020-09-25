@@ -52,7 +52,7 @@ class ClassRoomController extends Controller
         }
 
         ClassRoom::create($data);
-        toast()->success("Série Criada com Sucesso.");
+        toast()->success("Ano Criado com Sucesso.");
         return redirect()->route('classrooms.index');
     }
 
@@ -103,7 +103,7 @@ class ClassRoomController extends Controller
         }
 
         $classroom->update($data);
-        toast()->success("Série Alterada com Sucesso.");
+        toast()->success("Ano Alterado com Sucesso.");
         return redirect()->route('classrooms.index');
     }
 
@@ -116,6 +116,7 @@ class ClassRoomController extends Controller
     public function destroy(ClassRoom $classroom)
     {
         $classroom->delete();
+        toast()->success("Ano Excluído com Sucesso.");
         return redirect()->route('classrooms.index');
     }
 
@@ -124,7 +125,7 @@ class ClassRoomController extends Controller
             'required' => 'Este campo é obrigatório!',
             'min' => 'Mínimo de :min caracteres!',
             'max' => 'Máximo de :max caracteres!',
-            'unique' => 'Já existe esta série cadastrada!'
+            'unique' => 'Já existe este ano cadastrado!'
         ];
     }
 }

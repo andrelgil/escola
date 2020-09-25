@@ -43,8 +43,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|string|min:8|confirmed',
-        ],
-            $this->getMessages());
+        ], $this->getMessages());
 
         if ($validator->fails()) {
             toast()->error("Verifique os Erros!");
@@ -79,10 +78,26 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'name' => 'required',
+            'email' => 'required|email',
+        ], $this->getMessages());
+
+        if ($validator->fails()) {
+            toast()->error("Verifique os Erros!");
+
+            return back()->withErrors($validator)
+                        ->withInput();
+        }
+
+        // Campo de administrador
         if (!isset($data['admin'])) {
             $data['admin'] = 0;
         }
+
         $user->update($data);
+        toast()->success("Usuário Alterado com Sucesso.");
         return redirect()->route('users.index');
     }
 
@@ -95,6 +110,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
+        toast()->success("Usuário Excluído com Sucesso.");
         return redirect()->route('users.index');
     }
 

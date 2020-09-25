@@ -12,7 +12,7 @@ class SegmentSeeder extends Seeder
      */
     public function run()
     {
-        $segments = ['Ensino Fundamental (5º ao 9º ano)','Ensino Médio (1º ao 3º Colegial)','EJA (Educação de Jovens e Adultos)'];
+        $segments = ['Ensino Fundamental (6º ao 9º ano)','Ensino Médio (1º ao 3º ano)','EJA (Educação de Jovens e Adultos)'];
 
         foreach ($segments as $segments){
             factory(Segment::class)->create([

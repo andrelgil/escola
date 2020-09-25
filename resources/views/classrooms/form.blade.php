@@ -8,9 +8,9 @@
             <div class="card">
                 <div class="card-header">
                     @if (Route::currentRouteName() == 'classrooms.edit')
-                        Alteração de Series
+                        Alteração de Anos
                     @else
-                        Cadastro de Series
+                        Cadastro de Anos
                     @endif
                     <a href="{{ route('classrooms.index') }}" class="btn btn-default float-right">Voltar</a>
                 </div>
@@ -23,7 +23,7 @@
                         @endif
                         <div class="form-group">
                             <label for="name">Nome</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="@if (Route::currentRouteName() == 'classrooms.edit'){{ $room->name }}@else{{ old('name') }}@endif" placeholder="Digite a Série">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="@if (Route::currentRouteName() == 'classrooms.edit'){{ $room->name }}@else{{ old('name') }}@endif" placeholder="Digite o Ano">
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

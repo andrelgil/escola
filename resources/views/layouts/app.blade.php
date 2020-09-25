@@ -35,10 +35,11 @@
                     {{ config('app.name', 'Laravel') }}
                 </a>
 
-                @if (Route::currentRouteName() == 'matters.index'  OR
-                     Route::currentRouteName() == 'segments.index' OR
-                     Route::currentRouteName() == 'usuarios.index'  OR
-                     Route::currentRouteName() == 'classrooms.index')
+                @if (Route::currentRouteName() == 'matters.index'     OR
+                     Route::currentRouteName() == 'segments.index'    OR
+                     Route::currentRouteName() == 'users.index'       OR
+                     Route::currentRouteName() == 'classrooms.index'  OR
+                     Route::currentRouteName() == 'profile.index')
                     <a class="navbar-brand" href="{{ url('/home') }}">Home</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                         <span class="navbar-toggler-icon"></span>
@@ -76,10 +77,10 @@
 
                                     @if(auth()->user()->admin == '1')
                                     <a class="dropdown-item" href="{{ route('classrooms.index') }}">
-                                        {{ __('Séries') }}
+                                        {{ __('Anos') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('matters.index') }}">
-                                        {{ __('Matérias') }}
+                                        {{ __('Disciplinas') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('users.index') }}">
                                         {{ __('Usuários') }}

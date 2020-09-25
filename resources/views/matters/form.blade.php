@@ -7,9 +7,9 @@
             <div class="card">
                 <div class="card-header">
                     @if (Route::currentRouteName() == 'matters.edit')
-                        Alteração de Matérias
+                        Alteração de Disciplinas
                     @else
-                        Cadastro de Matérias
+                        Cadastro de Disciplinas
                     @endif
                     <a href="{{ route('matters.index') }}" class="btn btn-default float-right">Voltar</a>
                 </div>
@@ -31,7 +31,7 @@
                             @else
                                 value="{{ old('name') }}"
                             @endif
-                            placeholder="Digite a Matéria">
+                            placeholder="Digite a Disciplina">
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

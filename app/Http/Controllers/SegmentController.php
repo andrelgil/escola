@@ -114,6 +114,7 @@ class SegmentController extends Controller
     public function destroy(Segment $segment)
     {
         $segment->delete();
+        toast()->success("Segmento Excluído com Sucesso.");
         return redirect()->route('segments.index');
     }
 

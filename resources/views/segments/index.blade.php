@@ -14,7 +14,7 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                        <th scope="col">Id</th>
+                        <th scope="col" width="70">Id</th>
                         <th scope="col">Nome</th>
                         <th scope="col"></th>
                         </tr>
@@ -22,7 +22,7 @@
                     <tbody>
                         @foreach($segments as $segment)
                         <tr>
-                            <th scope="row">{{ $segment->id }}</th>
+                            <th scope="row" width="70">{{ $segment->id }}</th>
                             <td>{{ $segment->name }}</td>
                             <td align="right" width="85">
                                 <form id="form_{{ $segment->id }}" action="{{ route('segments.destroy', ['segment' => $segment->id]) }}" method="post">

@@ -8,15 +8,15 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3 class="float-left">Séries</h3>
+                    <h3 class="float-left">Anos</h3>
                     <a href="{{ route('classrooms.create') }}" class="btn btn-success float-right">Novo</a>
                 </div>
 
                 <div class="card-body">
-                <table class="table">
+                <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                        <th scope="col">Id</th>
+                        <th scope="col" width="70">Id</th>
                         <th scope="col">Nome</th>
                         <th scope="col"></th>
                         </tr>
@@ -26,7 +26,7 @@
                         <tr>
                             <th scope="row">{{ $room->id }}</th>
                             <td>{{ $room->name }}</td>
-                            <td align="right" width="170">
+                            <td align="right" width="85">
                                 <form id="form_{{ $room->id }}" action="{{ route('classrooms.destroy', ['classroom' => $room->id]) }}" method="post">
                                     @csrf
                                     @method('delete')
@@ -56,7 +56,7 @@
     const confirmDelete = (form) => {
         Swal.fire({
             title: "Atenção!",
-            text: "Você deseja realmente excluir essa Série?",
+            text: "Você deseja realmente excluir esse Ano?",
             showCancelButton: true,
             cancelButtonText: 'Não',
             cancelButtonColor: '#3085D6',
