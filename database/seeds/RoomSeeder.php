@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\ClassRoom;
+use App\Models\Room;
 use Illuminate\Database\Seeder;
 
-class ClassRoomSeeder extends Seeder
+class RoomSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class ClassRoomSeeder extends Seeder
         $rooms = ['6º Ano A','6º Ano B','6º Ano C','7º Ano A','7º Ano B','8º Ano A','8º Ano B','8º Ano C'];
 
         foreach ($rooms as $room){
-            factory(ClassRoom::class)->create([
+            factory(Room::class)->create([
                 'name' => $room
             ]);
         }

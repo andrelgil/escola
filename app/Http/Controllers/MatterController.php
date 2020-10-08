@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Matter;
+use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -27,7 +28,8 @@ class MatterController extends Controller
      */
     public function create()
     {
-        return view('matters.form');
+        $rooms = Room::all();
+        return view('matters.form', ['rooms' => $rooms]);
     }
 
     /**
@@ -51,7 +53,13 @@ class MatterController extends Controller
                         ->withInput();
         }
 
-        Matter::create($data);
+        $matter = Matter::create($data);
+
+        if (isset($data['rooms']) && count($data['rooms'])) {
+            $matter->rooms()->sync($data['rooms']);
+        }
+
+
         toast()->success("Disciplina Criada com Sucesso.");
         return redirect()->route('matters.index');
     }
@@ -75,7 +83,9 @@ class MatterController extends Controller
      */
     public function edit(Matter $matter)
     {
-        return view('matters.form', [ 'matter' => $matter]);
+        $rooms = Room::all();
+
+        return view('matters.form', ['matter' => $matter, 'rooms' => $rooms]);
     }
 
     /**
@@ -101,6 +111,13 @@ class MatterController extends Controller
         }
 
         $matter->update($data);
+
+        if (!isset($data['rooms']) || !count($data['rooms'])) {
+            $matter->rooms()->detach();
+        } else {
+            $matter->rooms()->sync($data['rooms']);
+        }
+
         toast()->success("Disciplina Alterada com Sucesso.");
         return redirect()->route('matters.index');
     }

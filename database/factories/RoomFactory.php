@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\ClassRoom;
+use App\Models\Room;
 use Faker\Generator as Faker;
 
-$factory->define(ClassRoom::class, function (Faker $faker) {
+$factory->define(Room::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         ];

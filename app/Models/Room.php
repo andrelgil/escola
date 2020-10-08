@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ClassRoom extends Model
+class Room extends Model
 {
-    protected $table = 'classrooms';
+    protected $table = 'rooms';
 
     protected $fillable = [
         'name'
@@ -14,6 +14,6 @@ class ClassRoom extends Model
 
     public function matters()
     {
-        return $this->hasMany(Matter::class, 'classroom_id');
+        return $this->belongsToMany(Matter::class);
     }
 }

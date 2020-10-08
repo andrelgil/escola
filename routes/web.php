@@ -29,7 +29,7 @@ Route::put('/meus-dados', 'ProfileController@update');
 Route::middleware(['auth','admin'])->group(function() {
 
     // Series
-    Route::resource('classrooms','ClassRoomController')->except(['show'])->names('classrooms');
+    Route::resource('rooms','RoomController')->except(['show'])->names('rooms');
     // Materias
     Route::resource('matters','MatterController')->except(['show'])->names('matters');
     // Segmentos

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSegmentsClassRoomsTable extends Migration
+class CreateSegmentRoomTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateSegmentsClassRoomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('segments_classrooms', function (Blueprint $table) {
+        Schema::create('segment_room', function (Blueprint $table) {
             $table->unsignedBigInteger('segment_id');
             $table->foreign('segment_id')->references('id')->on('segments')->onDelete('cascade');
-            $table->unsignedBigInteger('classroom_id');
-            $table->foreign('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
+            $table->unsignedBigInteger('room_id');
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
         });
     }
 
@@ -28,6 +28,6 @@ class CreateSegmentsClassRoomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('segments_classrooms');
+        Schema::dropIfExists('segment_room');
     }
 }

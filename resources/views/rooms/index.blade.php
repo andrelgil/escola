@@ -5,11 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
-
             <div class="card">
                 <div class="card-header">
                     <h3 class="float-left">Anos</h3>
-                    <a href="{{ route('classrooms.create') }}" class="btn btn-success float-right">Novo</a>
+                    <a href="{{ route('rooms.create') }}" class="btn btn-success float-right">Novo</a>
                 </div>
 
                 <div class="card-body">
@@ -27,10 +26,10 @@
                             <th scope="row">{{ $room->id }}</th>
                             <td>{{ $room->name }}</td>
                             <td align="right" width="85">
-                                <form id="form_{{ $room->id }}" action="{{ route('classrooms.destroy', ['classroom' => $room->id]) }}" method="post">
+                                <form id="form_{{ $room->id }}" action="{{ route('rooms.destroy', ['room' => $room->id]) }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{ route('classrooms.edit', [ 'classroom' => $room->id ]) }}" class="btn btn-outline-primary btn-sm">
+                                    <a href="{{ route('rooms.edit', [ 'room' => $room->id ]) }}" class="btn btn-outline-primary btn-sm">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     <button type="button" onclick="confirmDelete('form_{{ $room->id }}')" class="btn btn-outline-danger btn-sm">

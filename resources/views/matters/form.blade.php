@@ -38,6 +38,18 @@
                             </span>
                         @enderror
                     </div>
+
+
+                            <ul class="list">
+                            @foreach($rooms as $room)
+                            <li class="list-item">
+                                <input class="form-check-input" type="checkbox" name="rooms[]" value="{{ $room->id }}" @if(isset($matter) && $matter->hasRoom($room)) checked @endif style="position: relative; margin: 0 10px 0 0;">{{ $room->name }}
+                            </li>
+                            @endforeach
+                            </ul>
+
+
+                    <br>
                     <button type="submit" class="btn btn-primary">@if (Route::currentRouteName() == 'matters.edit') Alterar @else Cadastrar @endif</button>
                 </div>
             </div>

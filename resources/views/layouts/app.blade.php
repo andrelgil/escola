@@ -25,6 +25,20 @@
             vertical-align: top;
             border-top: 1px solid #dee2e6;
         }
+        .list {
+            display: table;
+            width: 100%;
+            padding-left: 0;
+            margin-bottom: 0;
+            border-radius: 0;
+            list-style: none;
+        }
+        .list-item {
+            float: left;
+            width: 20%;
+            padding: 0.2rem 0.7rem;
+            border: 1px solid #CCC;
+        }
     </style>
 </head>
 <body>
@@ -38,7 +52,7 @@
                 @if (Route::currentRouteName() == 'matters.index'     OR
                      Route::currentRouteName() == 'segments.index'    OR
                      Route::currentRouteName() == 'users.index'       OR
-                     Route::currentRouteName() == 'classrooms.index'  OR
+                     Route::currentRouteName() == 'rooms.index'  OR
                      Route::currentRouteName() == 'profile.index')
                     <a class="navbar-brand" href="{{ url('/home') }}">Home</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -76,7 +90,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                                     @if(auth()->user()->admin == '1')
-                                    <a class="dropdown-item" href="{{ route('classrooms.index') }}">
+                                    <a class="dropdown-item" href="{{ route('rooms.index') }}">
                                         {{ __('Anos') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('matters.index') }}">
