@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Matter;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -27,7 +28,8 @@ class RoomController extends Controller
      */
     public function create()
     {
-        return view('rooms.form');
+        $matters = Matter::all();
+        return view('rooms.form', ['matters' => $matters]);
     }
 
     /**
@@ -51,7 +53,12 @@ class RoomController extends Controller
                         ->withInput();
         }
 
-        Room::create($data);
+        $room = Room::create($data);
+
+        if (isset($data['matters']) && count($data['matters'])) {
+            $room->matters()->sync($data['matters']);
+        }
+
         toast()->success("Ano Criado com Sucesso.");
         return redirect()->route('rooms.index');
     }
@@ -74,8 +81,12 @@ class RoomController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Room $room)
+
     {
-        return view('rooms.form', ['room' => $room]);
+        $matters = Matter::all();
+
+        return view('rooms.form', ['room' => $room, 'matters' => $matters]);
+
     }
 
     /**
@@ -100,6 +111,14 @@ class RoomController extends Controller
 
             return back()->withErrors($validator)
                          ->withInput();
+        }
+
+        $room->update($data);
+
+        if (!isset($data['matters']) || !count($data['matters'])) {
+            $room->matters()->detach();
+        } else {
+            $room->matters()->sync($data['matters']);
         }
 
         $room->update($data);

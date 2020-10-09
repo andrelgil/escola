@@ -5,6 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+
                 <div class="card-header">
                     @if (Route::currentRouteName() == 'matters.edit')
                         Alteração de Disciplinas
@@ -33,21 +34,20 @@
                             @endif
                             placeholder="Digite a Disciplina">
                         @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
 
-
-                            <ul class="list">
-                            @foreach($rooms as $room)
-                            <li class="list-item">
-                                <input class="form-check-input" type="checkbox" name="rooms[]" value="{{ $room->id }}" @if(isset($matter) && $matter->hasRoom($room)) checked @endif style="position: relative; margin: 0 10px 0 0;">{{ $room->name }}
-                            </li>
-                            @endforeach
-                            </ul>
-
+                    Anos Relacionados à Disciplina
+                    <ul class="list">
+                        @foreach($rooms as $room)
+                        <li class="list-item">
+                            <input class="form-check-input" type="checkbox" name="rooms[]" value="{{ $room->id }}" @if(isset($matter) && $matter->hasRoom($room)) checked @endif style="position: relative; margin: 0 10px 0 0;">{{ $room->name }}
+                        </li>
+                        @endforeach
+                    </ul>
 
                     <br>
                     <button type="submit" class="btn btn-primary">@if (Route::currentRouteName() == 'matters.edit') Alterar @else Cadastrar @endif</button>

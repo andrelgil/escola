@@ -14,6 +14,11 @@ class Room extends Model
 
     public function matters()
     {
-        return $this->belongsToMany(Matter::class);
+        return $this->belongsToMany(Matter::class, 'room_matter');
+    }
+
+    public function hasMatter(Matter $matter)
+    {
+        return $this->matters->contains($matter);
     }
 }

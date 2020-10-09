@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
 
             <div class="card">
                 <div class="card-header">
@@ -31,6 +31,16 @@
                             @enderror
                         </div>
 
+                        Disciplinas Relacionadas ao Ano
+                        <ul class="list">
+                            @foreach($matters as $matter)
+                            <li class="list-item">
+                                <input class="form-check-input" type="checkbox" name="matters[]" value="{{ $matter->id }}" @if(isset($room) && $room->hasMatter($matter)) checked @endif style="position: relative; margin: 0 10px 0 0;">{{ $matter->name }}
+                            </li>
+                            @endforeach
+                        </ul>
+
+                        <br>
                         <button type="submit" class="btn btn-primary">@if (Route::currentRouteName() == 'rooms.edit') Alterar @else Cadastrar @endif</button>
                     </form>
                 </div>
